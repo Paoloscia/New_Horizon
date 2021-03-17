@@ -1,6 +1,7 @@
 let toggled = false;
 const nav = document.getElementById('navigation');
 const btn = document.getElementsByClassName('nav-tgl')[0];
+
 const btnScrollToTop = document.getElementById("btnScrollToTop");
 if(btnScrollToTop){
 btnScrollToTop.onclick = function(evt){window.scrollTo(0,0);};
