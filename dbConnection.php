@@ -1,10 +1,10 @@
 <?php
 
 class DBAccess{
-  const HOST_DB = 'localhost';
-  const USERNAME = 'root';
-  const PASSWORD = '';
-  const DATABASE_NAME = 'my_meowhorizon';
+  const HOST_DB = '';
+  const USERNAME = 'dlazzaro';
+  const PASSWORD = 'ke3Ohgeef0woir0o';
+  const DATABASE_NAME = 'dlazzaro';
 
   public $connection = null;
 
@@ -24,7 +24,6 @@ class DBAccess{
 
     if(mysqli_num_rows($queryResult) == 0)
     {
-      echo("Errore query missioni per luogo");
       return null;
     }
     else{
@@ -70,6 +69,11 @@ class DBAccess{
       }
     }
     return $result;
+  }
+  public function add_mission($nome, $data_inizio, $data_fine, $stato, $affiliazioni, $destinazione, $scopo)
+  {
+    $query = "INSERT INTO Missioni VALUES ('$nome', '$data_inizio', '$data_fine', '$stato', '$affiliazioni', '$destinazione', '$scopo')";
+    $queryResult=mysqli_query($this->connection, $query);
   }
   public function add_preferita($username,$missione)
   {
@@ -166,12 +170,12 @@ public function test_input($data) {
   $data = trim($data);
   $data = stripslashes($data);
   $data = htmlspecialchars($data);
+  $data = mysqli_real_escape_string($this->connection, $data);
   return $data;
 }
 public function modifica_nome($chiave, $valore){
   $query= "UPDATE Missioni set nome= '$valore' where nome = '$chiave'";
   $queryResult=mysqli_query($this->connection, $query);
-  echo('eseguita');
 }
 public function modifica_data_inizio($chiave, $valore){
   $query= "UPDATE Missioni set data_inizio= '$valore' where nome = '$chiave'";
@@ -182,7 +186,7 @@ public function modifica_data_fine($chiave, $valore){
   $queryResult=mysqli_query($this->connection, $query);
 }
 public function modifica_stato($chiave, $valore){
-  $query= "UPDATE Missioni set data_fine= '$valore' where nome = '$chiave'";
+  $query= "UPDATE Missioni set stato= '$valore' where nome = '$chiave'";
   $queryResult=mysqli_query($this->connection, $query);
 }
 public function modifica_affiliazioni($chiave, $valore){
@@ -196,6 +200,33 @@ public function modifica_destinazione($chiave, $valore){
 public function modifica_scopo($chiave, $valore){
   $query= "UPDATE Missioni set scopo= '$valore' where nome = '$chiave'";
   $queryResult=mysqli_query($this->connection, $query);
+}
+public function add_message($username, $oggetto, $messaggio)
+{
+  $query = "INSERT INTO Messaggi_utenti VALUES ('','$username', '$oggetto', '$messaggio')";
+  $queryResult=mysqli_query($this->connection, $query);
+}
+public function validateDate($date, $format = 'Y-m-d H:i:s')
+{
+    $d = DateTime::createFromFormat($format, $date);
+    return $d && $d->format($format) == $date;
+}
+public function validateName($name){
+  $query = "SELECT nome FROM Missioni ORDER BY data_inizio DESC";
+  $queryResult=mysqli_query($this->connection, $query);
+  $result=array();
+    while($row = mysqli_fetch_assoc($queryResult))
+    {
+      $singolaEntry = $row['nome'];
+      array_push($result, $singolaEntry);
+    }
+  foreach($result as $valore){
+    if($name == $valore){
+      return false;
+    }
+  }
+  return true;
+
 }
 }
 ?>

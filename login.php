@@ -4,7 +4,7 @@
   $connessioneOK=$oggettoConnessione->openDBConnection();
   $paginaHTML = file_get_contents('login.html');
   session_start();
-  function checkInput($username,$email,$password) {
+  function checkInput($username,$password) {
       $error = "";
 
       if (strlen($username) < 3)
@@ -21,21 +21,22 @@
       return $error;
 
   }
-  if($_SESSION['username'] != ''){
+  if(isset($_SESSION['username'])){
     header('Location: utente.php');
   }
   else{
   if(isset($_POST['submit'])){
       $username = $_POST['username'];
       $password = $_POST['password'];
+          $errori = checkInput($username, $password);
       if(!($errori == "")){
         if (strstr($errori,"Nome"))
         {
-          $paginaHTML = str_replace("<erroreUsername/>",$errori, $paginaHTML);
+          $paginaHTML = str_replace('<div id="username-error"> </div>',$errori, $paginaHTML);
         }
         if(strstr($errori,"Password"))
         {
-          $paginaHTML = str_replace("<errorePassword/>",$errori, $paginaHTML);
+          $paginaHTML = str_replace('<div id="password-error"> </div>',$errori, $paginaHTML);
         }
         $errori = "";
         echo($paginaHTML);

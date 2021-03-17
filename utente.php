@@ -11,41 +11,48 @@ $connessioneOK=$oggettoConnessione->openDBConnection();
       $elencopref = "";
       $query= "SELECT nome FROM Utenti_Missioni WHERE username = '" . $_SESSION['username'] ."'";
       $result_pref = mysqli_query($oggettoConnessione->connection, $query );
-      $paginaHTML = str_replace("<username/>","<span class='testo-amministrazione'>" .$_SESSION['username'] ."</span>",$paginaHTML);
-      $paginaHTML = str_replace("<email/>","<span class='testo-amministrazione'>" .$_SESSION['email'] ."</span>",$paginaHTML);
+      $paginaHTML = str_replace("<username/>",$_SESSION['username'] ,$paginaHTML);
+      $paginaHTML = str_replace("<email/>",$_SESSION['email'],$paginaHTML);
       $paginaHTML = str_replace("<tabellapreferiti/>","<div id='contentMission'><missions/> </div>",$paginaHTML);
       $missioni = $oggettoConnessione->getMissioniPrefe($_SESSION['username']);
-      foreach($missioni as $valore){
+      if(isset($missioni)) {
         $stringa_missioni = "";
-        $data_ini = "N/A";
-        $data_fin = "N/A";
-        if($valore['data_inizio'] != null)
-        {
-          $data_ini = $valore['data_inizio'];
+        foreach($missioni as $valore){
+          $data_ini = "N/A";
+          $data_fin = "N/A";
+          if($valore['data_inizio'] != null)
+          {
+            $data_ini = $valore['data_inizio'];
+          }
+          if($valore['data_fine'] != null)
+          {
+            $data_fin = $valore['data_fine'];
+          }
+          $stringa_missioni .= '<div class="mission-box">' .
+          "<h2>Nome della missione: " . $valore['missione'] . "</h2>" .
+          "<p>Iniziata in data: " . $data_ini . "</p>" .
+          "<p>Fine in data: " . $data_fin . "</p>" .
+          "<p>Stato: " . $valore['stato'] . "</p>" .
+          "<p>Affiliazioni: " . $valore['affiliazioni'] . "</p>" .
+          "<p>Luogo: " . $valore['destinazione'] . "</p>" .
+          "<p>Scopo: " . $valore['scopo'] . "</p>" .
+          "</div>";
         }
-        if($valore['data_fine'] != null)
-        {
-          $data_fin = $valore['data_fine'];
+      }
+      else{
+        $paginaHTML = str_replace('<p class="testo-amministrazione" >Ecco le tue spedizioni preferite:</p>', '<p class="testo-amministrazione" >Non hai ancora delle missioni preferite</p>', $paginaHTML);
+      }
+        if(isset($stringa_missioni)) {
+          $paginaHTML = str_replace("<missions/>",$stringa_missioni,$paginaHTML);
         }
-        $stringa_missioni .= '<div class="mission-box">' .
-        "<h2>Nome della missione: " . $valore['missione'] . "</h2>" .
-        "<p>Iniziata in data: " . $data_ini . "</p>" .
-        "<p>Fine in data: " . $data_fin . "</p>" .
-        "<p>Stato: " . $valore['stato'] . "</p>" .
-        "<p>Affiliazioni: " . $valore['affiliazioni'] . "</p>" .
-        "<p>Luogo: " . $valore['destinazione'] . "</p>" .
-        "<p>Scopo: " . $valore['scopo'] . "</p>" .
-        "</div>";
-    }
-        $paginaHTML = str_replace("<missions/>",$stringa_missioni,$paginaHTML);
         echo($paginaHTML);
     }
     else {
-      // non è un utente, ridireziona alla pagina admin
+      // non &egrave; un utente, ridireziona alla pagina admin
       header('Location: admin.php');
     }
   }
   else {
-    // non è autenticato, ridireziona alla pagina login
+    // non &egrave; autenticato, ridireziona alla pagina login
     header('Location: login.php');
   }

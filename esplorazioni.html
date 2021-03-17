@@ -2,52 +2,65 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
 
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Esplorazioni | New Horizon</title>
-    <meta name="title" content="esplorazioni di New Horizon" />
+    <meta name="title" content="esplorazioni di New Horizon"/>
     <meta name= "description" content="missions and esplorations about New Horizon"/>
     <meta name= "keywords" content = "New, Horizon, New Horizon, Missioni, Esplorazioni, Space, Spazio, Esplorations, Missions, Company"/>
     <meta name="language" content="italian it"/>
     <meta name="author" content="Alessandro Rizzo, Emanuele Cisotto, Davide Lazzaro e Paolo Scialpi"/>
-    <link href="style-large.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="style-medium.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="style-portrait.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="style-landscape.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="style-print.css" rel="stylesheet" type="text/css" media="print" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Script-Type" content="type"/>
+    <meta http-equiv="Content-Style-Type" content="text/css"/>
+    <link href="style-large.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="style-medium.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="style-portrait.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="style-landscape.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="style-print.min.css" rel="stylesheet" type="text/css" media="print" />
     <link href="https://fonts.googleapis.com/css?family=Oswald:500&amp;display=swap" rel="stylesheet"/>
   </head>
 
   <body>
-    <div class="navigation">
-      <button class="nav-tgl" type="button">
-        <span></span>
-      </button>
-            <button onclick="location.href='index.php'" class="desktop button0" xml:lang="en">Home</button>
-            <button onclick="location.href='esplorazioni.php'" class="position desktop button1" disabled="disabled">Esplorazioni</button>
-            <button onclick="location.href='about.html'" class="desktop button2">Chi siamo</button>
-            <button onclick="location.href='collaborazioni.html'" class="desktop button3">Collaborazioni</button>
-            <button onclick="location.href='ricerca.html'" class="desktop button4">Ricerca</button>
-            <button onclick="location.href='contattaci.html'" class="desktop button5">Contattaci</button>
-            <button onclick="location.href='login.php'" class="desktop button6" xml:lang="en">Login</button>
-            <script type="text/javascript" src="esplorazioni.js"></script>
-    </div>
+    <div id="navigation">
+      <div id="navigation-content">
+            <button onclick="location.href='index.php'" tabindex="0" class="desktop  " xml:lang="en">Home</button>
+            <button onclick="location.href='esplorazioni.php'" class="position desktop  " disabled="disabled">Esplorazioni</button>
+            <button onclick="location.href='about.php'" class="desktop  ">Chi siamo</button>
+            <button onclick="location.href='collaborazioni.php'" class="desktop  ">Collaborazioni</button>
+            <button onclick="location.href='ricerca.php'" class="desktop  ">Ricerca</button>
+            <button onclick="location.href='contattaci.php'" class="desktop  ">Contattaci</button>
+            <button onclick="location.href='login.php'" class="desktop  " xml:lang="en">Login</button>
+            <ul class="breadcrumb">
+              <li title="Ti trovi in esplorazioni"> &#8594; Esplorazioni</li>
+            </ul>
+          </div>
+        </div>
+              <!-- bottone per chiudere la navigation mobile -->
+      <div>
+        <p><a class="nav-tgl" >&equiv;</a></p>
+      </div>
     <div id="contentEsp">
       <h1>MISSIONI</h1>
 
       <form id="search" action="esplorazioni.php" method="get">
-      <fieldset>
-      <legend>Cerca nel sito</legend>
-      <input type="text" onfocus="myFocusFunction(this)" onblur="myBlurFunction(this)" id="cerca_missione" name="Nome_del_pianeta" value="cerca pianeta…">
-      <button tabindex="3" type="submit" name="submit" id="pulsante_cerca_pianeta"><img src="images/cerca.png" alt="Cerca" title="avvia la ricerca"></button>
-      <p id="filtro_scritta">Filtro attuale: </p>
-      <actualFilterHere/>
-      <button tabindex="4" type="submit" name="submitAnnullaFiltro" id="pulsante_cerca_tutte">Annulla filtro di ricerca</button>
+      <fieldset id="esplFieldset">
+      <legend id="esplorazLegend">Cerca nel sito</legend>
+      <div id="search_section">
+        <label for="cerca_missione" class="dis_block">Inserire il luogo secondo cui filtrare le spedizioni</label>
+        <input type="text" class="dis_block" onfocus="myFocusFunction(this)" onblur="myBlurFunction(this)" id="cerca_missione" name="Nome_del_pianeta" value="Cerca luogo…"/>
+        <button title="Cerca missioni per il luogo selezionato" type="submit" name="submit" id="pulsante_cerca_pianeta"><img src="images/cerca.png" id="search_img" alt="Cerca" title="avvia la ricerca"/></button>
+      </div>
+      <button type="submit" name="submitAnnullaFiltro" id="pulsante_cerca_tutte">Annulla filtro di ricerca</button>
       </fieldset>
       </form>
-      <p id="dida">cerca un pianeta per visualizzare solamente le missioni con quella destinazione</p>
-      <planetNotFound></planetNotFound>
-      <missionsHere/>
-      </div>
+      <p id="searchError"></p>
+      <p id="filtro_scritta">Filtro attuale: <span id='actualFilterHere'>nessun filtro</span></p>
+      <p id='planetNotFound'></p>
+      <div id='missionsHere'></div>
+    </div>
+    <div>
+      <button name="torna su" title="torna su" id ="btnScrollToTop">
+      <div id="frecciasu"></div></button>
     </div>
     <div id="footer">
       <p class="validation">
@@ -60,9 +73,9 @@
           </a>
         </p>
         <p class ="info"><span xml:lang="en">New Horizon</span><br/> con la collaborazione di:<br/>Cisotto Emanuele, Lazzaro Davide, Rizzo Alessandro, Scialpi Paolo</p>
-        <div class="social"><p>  Seguici su: <img src="images/twitter.png" class="footer-icon" alt="twitter logo"/><img src="images/facebook.png" class="footer-icon" alt="facebook logo"/><img src="images/instagram.png" class="footer-icon" alt="instagram logo"/></p>
+        <div class="social"><p>  Seguici su: <img src="images/twitterfooter.png" class="footer-icon" alt="twitter logo" onclick="location.href='contattaci.php'"/> <img src="images/facebookfooter.png" class="footer-icon" alt="facebook logo" onclick="location.href='contattaci.php'"/> <img src="images/instagramfooter.png" class="footer-icon" alt="instagram logo" onclick="location.href='contattaci.php'"/></p>
         </div>
       </div>
-      <posscript></posscript>
+      <script type="text/javascript" src="esplorazioni.js"></script>
   </body>
   </html>

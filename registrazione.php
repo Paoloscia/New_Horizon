@@ -17,7 +17,7 @@
       {
           $error = "<span class='error'>Password troppo corta</span>";
       }
-      if(!strstr("@",$email))
+      if(!preg_match("/^([a-zA-Z0-9_.+-])+@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9])*$/",$email))
       {
         $error = "<span class='error'> email non valida</span>";
       }
@@ -38,44 +38,42 @@ if($connessioneOK)
         else {
           $sesso = 'F';
         }
-        $occupazione = ['occupazione'];
+        $occupazione = $_POST['occupazione'];
         $errori = checkInput($username,$email,$password);
         if(!($errori == "")){
           if (strstr($errori,"Nome"))
           {
-            $paginaHTML = str_replace("<erroreUsername/>",$errori, $paginaHTML);
+            $paginaHTML = str_replace('<div id="username-error"> </div>',$errori, $paginaHTML);
           }
           if(strstr($errori,"Password"))
           {
-            $paginaHTML = str_replace("<errorePassword/>",$errori, $paginaHTML);
+            $paginaHTML = str_replace('<div id="password-error"> </div>',$errori, $paginaHTML);
           }
           if(strstr($errori,"email"))
           {
-            $paginaHTML = str_replace("<erroreEmail/>",$errori, $paginaHTML);
+            $paginaHTML = str_replace('<div id="email-error"> </div>',$errori, $paginaHTML);
           }
           $errori = "";
           echo($paginaHTML);
         }
         else{
         $query= "SELECT username FROM Utenti WHERE username = '" . $username . "'" ;
-        echo($query);
         $result = mysqli_query($oggettoConnessione->connection, $query);
         if(mysqli_num_rows($result) == 0)
         {
-          $query= "INSERT INTO Utenti VALUES ('" . $username . "' , '" . $password . "' , '" . $sesso ."' , '" . $email ."' , '" . $occpuazione ."' , 'generico')" ;
+          $query= "INSERT INTO Utenti VALUES ('" . $username . "' , '" . $password . "' , '" . $sesso ."' , '" . $email ."' , '" . $occupazione ."' , 'generico')" ;
           $result = mysqli_query($oggettoConnessione->connection, $query);
-          echo($query);
           if($result)
           {
-           $paginaHTML = str_replace("<successo/>","<span>Congratulazioni! sei registrato.</span>", $paginaHTML);
+           $paginaHTML = str_replace('<div id="successo"> </div>',"<span id='reg_succ'>Congratulazioni! sei registrato.</span>", $paginaHTML);
           }
           else {
-            $paginaHTML = str_replace("<successo/>","<span class='error'>Sembra ci sia stato qualche problema, prova a ricompilare il form.</span>", $paginaHTML);
+            $paginaHTML = str_replace('<div id="successo"> </div>',"<span class='error'>Sembra ci sia stato qualche problema, prova a ricompilare il form.</span>", $paginaHTML);
           }
         }
         else
         {
-          $paginaHTML = str_replace("<erroreUsername/>","<span class='error'>Questo username esiste già</span>", $paginaHTML);
+          $paginaHTML = str_replace('<div id="successo"> </div>',"<span class='error'>Questo username esiste gi&agrave;</span>", $paginaHTML);
         }
         echo($paginaHTML);
         }

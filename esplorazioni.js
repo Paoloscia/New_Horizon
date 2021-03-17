@@ -1,46 +1,65 @@
 function myFocusFunction(x) {x.value = '';}
-function myBlurFunction(x) { if(x.value === '') { x.value = 'cerca pianeta…'; }}
+function myBlurFunction(x) { if(x.value === '') { x.value = 'Cerca luogo…'; }}
 
-function resetPosition(id) {
+/*function resetPosition(id) {
   var elmnt = document.getElementById(id);
   elmnt.scroll(0, 1000);
+}*/
+
+var actual_pos = null;
+
+const btnScrollToTop = document.getElementById("btnScrollToTop");
+btnScrollToTop.onclick = function(evt){window.scrollTo(0,0);};
+
+
+const btnAnnullaFiltro = document.getElementById("pulsante_cerca_tutte");
+btnAnnullaFiltro.onclick = function(evt){localStorage.setItem("actual_pos", document.documentElement.scrollTop);};
+
+const btnCercaPianeta = document.getElementById("pulsante_cerca_pianeta");
+btnCercaPianeta.onclick = function(evt){localStorage.setItem("actual_pos", document.documentElement.scrollTop);};
+
+var forms = document.getElementsByClassName("missionform");
+
+for (var i = 0, len = forms.length; i < len; i++) {
+  forms[i].addEventListener('submit', handleForm);
 }
 
+//var testForm = document.getElementById("missionForm1");
+//testForm.addEventListener('submit', handleForm);
+
+function handleForm(event) {
+  // event.preventDefault();
+  localStorage.setItem("actual_pos", document.documentElement.scrollTop);
+  // window.alert(localStorage.getItem("actual_pos"));
+  // testForm.submit();
+}
+
+window.onload = function(){
+  // window.alert(localStorage.getItem("actual_pos"));
+  window.scrollTo(localStorage.getItem("actual_pos"), localStorage.getItem("actual_pos"));
+}
+
+/*const gogo = document.getElementById("missionForm1");
+gogo.onsubmit = function(evt){window.scrollTo(100,100);return false;};*/
+
+// btnPrefe.onclick = function(evt){alert("Missione aggiunta correttamente ai preferiti!");};
+
 let toggled = false;
-const nav = document.getElementsByClassName('navigation')[0];
+const nav = document.getElementById('navigation');
 const btn = document.getElementsByClassName('nav-tgl')[0];
-const first_button = document.getElementsByClassName('desktop')[0];
-const sec_button = document.getElementsByClassName('desktop')[1];
-const third_button = document.getElementsByClassName('desktop')[2];
-const fourth_button = document.getElementsByClassName('desktop')[3];
-const fifth_button = document.getElementsByClassName('desktop')[4];
-const sixth_button = document.getElementsByClassName('desktop')[5];
-const seventh_button = document.getElementsByClassName('desktop')[6];
-btn.onclick = function(evt) {
-  if (!toggled) {
-    toggled = true;
-    btn.classList.add('toggled');
-    nav.classList.add('active');
-    first_button.classList.add('active');
-    sec_button.classList.add('active');
-    third_button.classList.add('active');
-    fourth_button.classList.add('active');
-    fifth_button.classList.add('active');
-    sixth_button.classList.add('active');
-    seventh_button.classList.add('active');
-  } else {
+
+btn.onclick = function (evt) {
+  if (toggled) {
     toggled = false;
-    btn.classList.remove('toggled');
-    nav.classList.remove('active');
-    first_button.classList.remove('active');
-    sec_button.classList.remove('active');
-    third_button.classList.remove('active');
-    fourth_button.classList.remove('active');
-    fifth_button.classList.remove('active');
-    sixth_button.classList.remove('active');
-    seventh_button.classList.remove('active');
+    btn.innerHTML = "&equiv;"
+    navigation.style.height = "0%";
+  } else {
+    toggled = true;
+    btn.innerHTML = "&times;"
+    navigation.style.height = "100%";
   }
 }
+
 /*
 document.getElementById("search").onsubmit = function()
 {

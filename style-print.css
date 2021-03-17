@@ -2,6 +2,11 @@
 
 @media print
 {
+  html{
+    font-family: "Times New Roman", Times, serif;
+    font-size:12pt;
+    }
+
   /*--------------GENERAL PURPOSE CSS------------------------------------------*/
   .navigation {
     display: none;
@@ -11,7 +16,32 @@
     display: none;
   }
 
+  abbr {
+    text-decoration: none;
+  }
   /*--------------ESPLORAZIONI------------------------------------------*/
+  #background
+  {
+    display: none;
+  }
+
+  .grid-container a
+  {
+    display: none;
+  }
+  .grid-container img
+  {
+    display: none;
+  }
+  .grid-container button
+  {
+    display: none;
+  }
+
+  #btnScrollToTop{
+      display: none;
+  }
+
   #dida
   {
     display: none;
@@ -20,6 +50,35 @@
   #footer{
     display: none;
   }
+
+  #esplorazLegend {
+    display: none;
+  }
+
+  #search_section {
+    display: none;
+  }
+
+  #cerca_missione {
+    display: none;
+  }
+
+  #pulsante_cerca_pianeta {
+    display: none;
+  }
+
+  .missionform {
+    display: none;
+  }
+
+  #pulsante_cerca_tutte {
+    display: none;
+  }
+
+  .starImg {
+    display: none;
+  }
+ 
 
   /*----------------------------COLLABORAZIONI----------------------------------*/
 
@@ -137,4 +196,85 @@
   {
     display: none;
   }
+
+
+    /* ------------ LOGIN ------------------------------------ */
+  #login-box img
+  {
+    display: none;
+  }
+
+  #login_mail
+  {
+    color: black;
+    text-decoration: none;
+  }
+    /* ------------ CONTATTACI ------------------------------------ */
+    .aurora{
+      display: none;
+    }
+    .titolo{
+      font-size: 24pt;
+      text-align: center;
+    }
+    #form_text{
+      display: none;
+    }
+    #descrizione img {
+      width: 30%;
+      margin-right: 2%;
+    }
+    #descrizione #immagine_face{
+      width: 6%;
+      margin-right: 4%;
+    }
+    #descrizione #immagine_insta{
+      width: 6%;
+      margin-right: 4%;
+    }
+    #descrizione #immagine_twit{
+      width: 6%;
+      margin-right: 4%;
+    }
+    #formid{
+      display: none;
+    }
+    #testo_pulsante_form{
+      display: none;
+    }
+    #testo_pulsante_mail{
+      display: none;
+    }
+   
+
+  /* ------------ REGISTRAZIONE ------------------------------------ */
+
+  .login-box div{
+    margin: 0.5em;
+  }
+
+  .login-content a{
+    color: black;
+  }
+/* --------------------------- ADMIN ------------------------------------ */
+.adminbutton{
+  display: none;
+}
+.admintext{
+  display: none;
+}
+/* --------------------------- GESTIONE-ADMIN ------------------------------------ */
+.invisibleprint{
+  display: none;
+}
+/* --------------------------- MODIFICA MISSIONE ------------------------------------ */
+.buttonmodificamissione{
+  display: none;
+}
+#printinvia{
+  display: none;
+}
+.scrittemodificamissione, .buttoninputmodificamissione{
+  font-size: 16pt;
+}
 }

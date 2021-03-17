@@ -10,16 +10,17 @@ body {
   font-family: 'Oswald', sans-serif;
   color: #d3d3d3;
 }
-.navigation {
+#navigation {
   margin-top: -0.3em;
   padding: 0em;
-  height: 3.2em;
+  margin-bottom: -1em;
   width: 100%;
   background-color: #002125;
   position: sticky;
   top:0;
+  z-index: 2;
 }
-.navigation button {
+#navigation button {
   color: white;
   border:none;
   background-color: #002125;
@@ -33,18 +34,18 @@ body {
   font-family: 'Oswald', sans-serif;
   transition-duration: 0.5s;
 }
-.navigation button:hover{
-  font-size:1.6em;
+#navigation button:hover{
   background-color: #003135;
 }
 #mobile_menu{
   display: none;
 }
 .nav-tgl{
+  margin: 0em;
   display: none;
 }
 
-.navigation .position {
+#navigation .position {
   color: #002125;
   background-color: #d3d3d3;
   border:none;
@@ -57,34 +58,24 @@ body {
   width: 14.285%;
   font-size: 1.4em;
   font-family: 'Oswald', sans-serif;
-  box-shadow: 0em 0.3em 0.3em -0.1em #838383;
 }
-.navigation .position:hover {
+#navigation .position:hover {
   font-size:1.4em;
   background-color:#d3d3d3;
 }
 .breadcrumb {
-  padding: 2em 1em  ;
+  padding: 0.5em 1em  ;
+  margin: 0em;
   list-style: none;
-  background-color: #002125;
+  background-color: #001923;
 }
 .breadcrumb li {
-  margin-top: 1em;
   display: inline;
-  font-size: 18px;
-}
-.breadcrumb li+li:before {
-  margin-top: 1em;
-  color: black;
-  content: "/\00a0";
+  font-size: 1.3em;
 }
 .breadcrumb li a {
   color: #0275d8;
   text-decoration: none;
-}
-.breadcrumb li a:hover {
-  color: #01447e;
-  text-decoration: underline;
 }
 
 #footer {
@@ -137,6 +128,29 @@ body {
 .error{
   color: red;
   width: 100%;
+  display: block;
+}
+
+#btnScrollToTop
+{
+  background-color: inherit;
+  border: 0em;
+  padding: 0em;
+  position: fixed;
+  right: 2em;
+  bottom: 2em;
+  width: 3.5em;
+  height: 3.5em;
+  cursor: pointer;
+}
+#frecciasu
+{
+  padding: 0em;
+  width: 3.5em;
+  height: 3.5em;
+  border-radius: 50%;
+  background-image: url('images/frecciaup.jpg');
+  background-size: 3.5em;
 }
 
 /*------------------------HOME PAGE-------------------------------------------------------------*/
@@ -328,6 +342,8 @@ body {
   color: white;
 }
 
+
+
 .icon{
   max-width: 1.75em;
   max-height: 1.75em;
@@ -422,25 +438,7 @@ body {
     align-self: center;
     grid-area: st;
   }
-/*-----------------------------CONTATTCI--------------------------------------*/
-.navigation {
-  margin-top: -0.3em;
-  padding: 0em;
-  height: 3.2em;
-  width: 100%;
-  background-color: #002125;
-  position: sticky;
-  top:0;
-  margin-bottom: 1em;
-  z-index: 2;
-}
-body {
-  padding:0em;
-  margin:0em;
-  background-image: linear-gradient(to bottom, #0d0d0d, #00444C);
-  font-family: 'Oswald', sans-serif;
-  color: #d3d3d3;
-}
+/*-----------------------------CONTATTACI--------------------------------------*/
 .header{
   position: relative;
   z-index: -1;
@@ -449,7 +447,6 @@ body {
 .aurora{
   width: 100%;
   filter: blur(8px);
-  -webkit-filter: blur(8px);
 }
 .titolo{
  position: absolute;
@@ -487,7 +484,7 @@ body {
   display: grid;
   margin: 1em;
   grid-template-columns: 0.1fr 1fr 1fr 1fr 0.1fr;
-  grid-template-rows:  1.5fr 0.5fr 0.5fr 0.5fr 2.2fr 0.5fr 1fr;
+  grid-template-rows:  1fr 0.5fr 0.5fr 0.5fr 1.37fr 0.5fr 2.3fr;
   grid-template-areas:
     'b1 b2 b3 b4 b5'
     'c1 c2 c2 c2 c5'
@@ -533,23 +530,25 @@ body {
   font-size: calc(1.5vw + 0.5vh + 0.5vmin);
   text-shadow: 2px 2px 4px #000000;
   background-color: rgba(200,255,210, 0.1);
-  border: 3px solid rgba(200,255,210, 0.1);
+  border: 3px solid rgba(200,255,210, 0.2);
 }
 .testo_generico_contattaci:hover{
   background-color: rgba(100,100,100, 0.3);
 }
 .logo_social{
-  max-width: 30%;
+  width: 15%;
   justify-self: center;
   padding: 5%;
   filter: blur(3px);
   transition: 0.6s;
+  z-index: 0;
 }
 .logo_social:hover{
   filter: blur(0px);
-  max-width: 34%;
+  width: 20%;
   transition: 0.6s;
   padding:3%;
+  z-index: 0;
 }
 #testo_pulsante_form{
   grid-area: b2;
@@ -577,7 +576,7 @@ body {
 }
 #foto_social1{
   grid-area: k2;
-  max-width: 80%;
+  width: 80%;
   justify-self:center;
   border-radius: 2px;
   transition: .5s;
@@ -586,14 +585,14 @@ body {
   z-index: 0;
 }
 #foto_social1:hover{
-  max-width: 120%;
+  width: 120%;
   transition: .5s;
   opacity: 1;
   z-index: 1;
 }
 #foto_social2{
   grid-area: k3;
-  max-width: 80%;
+  width: 80%;
   justify-self:center;
   border-radius: 2px;
   transition: .5s;
@@ -602,14 +601,14 @@ body {
   z-index: 1;
 }
 #foto_social2:hover{
-  max-width: 150%;
+  width: 120%;
   transition: .5s;
   opacity: 1;
   z-index: 1;
 }
 #foto_social3{
   grid-area: k4;
-  max-width: 80%;
+  width: 80%;
   justify-self:center;
   border-radius: 2px;
   transition: .5s;
@@ -618,7 +617,7 @@ body {
   z-index: 0;
 }
 #foto_social3:hover{
-  max-width: 120%;
+  width: 120%;
   transition: .5s;
   opacity: 1;
   z-index: 1;
@@ -630,7 +629,17 @@ body {
   grid-area: g2;
   background-color: inherit;
 }
-
+#textarea{
+  resize: none;
+  max-width: 80%;
+}
+.formdescription{
+  font-size: calc(1.5vw + 0.5vh + 0.5vmin);
+}
+.formerror{
+  font-size: calc(1.5vw + 0.5vh + 0.5vmin);
+  color: crimson;
+}
 #validation2{
   grid-area: b;
   padding:1.4em;
@@ -638,6 +647,32 @@ body {
 .validation2 b{
     padding: 0em 1em;
 
+}
+.inputform{
+  background-color:#002125;
+  color:#d3d3d3;
+  border: 0.075em solid #d3d3d3;
+  border-radius: 0.3em;
+  padding: 0.3em;
+  margin:0em;
+  font-size: 2em;
+}
+#sendbutton {
+  background-color: #d3d3d3;
+  color: #002125;
+  border: 0.2em solid #002125;
+  border-radius: 0.3em;
+  padding: 0.3em;
+  margin:0em;
+  font-size: 2em;
+  transition-duration: 0.4s;
+  font-weight: bold;
+  margin-top: 1em;
+}
+#sendbutton:hover {
+  background-color:#002125;
+  color:#d3d3d3;
+  border: 0.2em solid #d3d3d3;;
 }
 
 /*----------------------------COLLABORAZIONI----------------------------------*/
@@ -756,25 +791,6 @@ body {
     text-align: justify;
   }
 
-#btnScrollToTop
-  {
-    position: fixed;
-    right: 1em;
-    bottom: 1em;
-    width: 3.5em;
-    height: 3.5em;
-    border-radius: 50%;
-    background: #e62739;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
-    color: #ffffff;
-    border: none;
-    outline: none;
-    cursor: pointer;
-  }
-
-#btnScrollToTop:active {
-  background: #cc2333;
-}
 /*--------------ESPLORAZIONI------------------------------------------*/
 #contentEsp h1{
     text-align: center;
@@ -782,44 +798,66 @@ body {
     margin-top: 1.5em;
 }
 
+#search_section {
+  text-align: left;
+}
+
 #search{
   display: grid;
   grid-gap: 0.2em;
   grid-template-areas: 'box but';
   grid-template-columns: 1fr 1fr;
-  margin-left: 38%;
+  margin-left: 40%;
 }
-#search fieldset{border: 0px solid;padding: 0}
-#search legend{text-indent: -9999px;font-size: 1px}
+#search fieldset{border: 0px solid;padding: 0;}
+#search legend{text-indent: -9999px;font-size: 1px;}
 #search input{
     float: left;
-    width: 170px;
-    height: 2.4em;
+    width: 10em;
+    height: 2.5em;
     margin: 1em 0em;
-    background: #FFF url(bk.png) repeat-x top left;
     border: 1px solid;
     font-size: 1.3em;
     border-color: #002125;
     border-radius: 0.3em;
 }
+
+#pulsante_cerca_pianeta {
+  display: block;
+}
+
+.dis_block{
+  display: block;
+}
+
+.actionLabel {
+  display: block;
+}
+
+#contentEsp #searchError {
+  color: red;
+  text-align: center;
+}
+
+ .notToDisp {
+   display: none;
+ }
+
 #search button{
+  font-weight: bold;
   border-radius: 0.5em;
   cursor: pointer;
   background-color: #d3d3d3;
   color: #002125;
-  border: 0.2em solid #002125;
-  padding: 11px;
-  padding-bottom: 12px;
+  padding: 1.1em;
   margin:0em;
-  font-size: 1.1em;
   transition-duration: 0.4s;
-  font-weight: bold;
-  margin-top: 1em;
+  margin-top: 1.4em;
+  margin-left: 1em;
 }
 
 #search button:hover {
-  background-color:#002125;
-  color:#d3d3d3;
+  border-color:#d3d3d3;
 }
 
   #contentEsp {
@@ -833,19 +871,6 @@ body {
 .buttonPrefe{
   max-width: 5em;
   max-height: 5em;
-}
-
-#filtro_scritta{
-  text-align: center;
-  font-size: 1.2em;
-  display: inline-block;
-  margin-left: 40%;
-}
-
-#filtro_attuale{
-  text-align: center;
-  font-size: 1.2em;
-  display: inline-block;
 }
 
   .mission-box {
@@ -866,10 +891,6 @@ body {
     margin: 0em;
     text-align: center;
 }
-#contentEsp #dida{
-  font-size: 1.25em;
-  text-align: center;
-}
 
 #errorPlanetNotFound{
   color: #fb5714;
@@ -879,13 +900,13 @@ body {
 }
 
 #filtro_scritta{
+  margin-left: 40%;
   text-align: center;
-  font-size: 1.2em;
+  font-size: 1.8em;
 }
 
-#filtro_attuale{
-  text-align: center;
-  font-size: 1.2em;
+#pulsante_cerca_tutte{
+  display: block;
 }
 
 .button_prefe{
@@ -899,14 +920,6 @@ body {
 
 .no_disp{
   display: none;
-}
-
-#cerca_missione{
-  grid-area: box;
-}
-
-#pulsante_cerca_pianeta{
-  grid-area: but;
 }
 
 /* ------------ RICERCA ------------------------------------ */
@@ -1041,41 +1054,39 @@ body {
 
 /* ------------ LOGIN ------------------------------------ */
 
-.login-content{
+#login-content{
   text-align: center;
   align-content: center;
 }
-.login-content h1{
+#login-content h1{
     font-size: 4em;
 }
-.login-content a{
+#login-content a{
   color: #d3d3d3
 }
-.login-content p{
+#login-content p{
   margin-top: 1.5em;
+  margin-bottom: 0;
 }
 #login{
   background-color: #001115;
 }
 
-.login-box{
+#reg_succ {
+  display: block;
+}
+
+#login-box{
   background-color: #d3d3d3;
   padding: 4em 0em;
   margin: 1em 25%;
   color: #002125;
   border-radius: 0.4em;
 }
-.login-box img{
-  padding: 0em;
-  margin-right:0.6em;
-  width: 2.8em;
-  height:3.2em;
+#login-box input{
   vertical-align: middle;
-}
-.login-box input{
-  margin: 1em 0em;
+  margin: 1em 20%;
   height: 2.5em;
-  margin-right: 2em;
   font-size: 1.3em;
   width:18em;
   border: 0.2em;
@@ -1083,10 +1094,10 @@ body {
   border-radius: 0.3em;
   text-align: center;
 }
-.login-box select{
-  margin: 1em 0em;
+#login-box select{
+  vertical-align: middle;
+  margin: 1em 20%;
   height: 2.5em;
-  margin-right: 2em;
   font-size: 1.3em;
   width:18em;
   border: 0.2em;
@@ -1099,12 +1110,15 @@ body {
   color: #002125;
   border: 0.2em solid #002125;
   border-radius: 0.3em;
+  margin: 0;
   padding: 0.3em;
-  margin:0em;
   font-size: 1.1em;
   transition-duration: 0.4s;
   font-weight: bold;
   margin-top: 1em;
+  vertical-align: middle;
+  display: flex;
+  margin-left: 45%;
 }
 .login-button:hover {
   background-color:#002125;
@@ -1133,17 +1147,110 @@ body {
   margin: 4em;
   margin-left: 2em;
   margin-right: 2em;
-  width: 30em;
+ width :25%;
   display: inline-block;
 }
 .amministratore-box img{
-  max-width: 10%;
-  max-height: 10%;
+  max-width: 15%;
+  max-height: 15%;
   background-color: inherit;
+}
+.amministratore-box button{
+  width: 80%;
+  position:relative;
+  left: 10%;
+  right: 10%;
+}
+.nomemissione{
+  text-align: center;
+  color: #000000;
+  font-size: calc(1vw + 0.6vh + 0.6vmin);
 }
 
 .transparent{
   background-color: transparent;
   border-style: hidden;
+}
+
+.admin-content{
+  position: relative;
+  left: 20%;
+  right: 40%;
+  max-width: 50%;
+  background-color: #d3d3d3;
+  color: #002125;
+  border: 0.2em solid #002125;
+  border-radius: 0.3em;
+  padding: 0.3em;
+  margin:3em;
+  font-size: calc(1.2vw + 0.8vh + 0.8vmin);
+  text-align: center;
+}
+.adminbutton {
+  background-color: #d3d3d3;
+  color: #002125;
+  border: 0.2em solid #002125;
+  border-radius: 0.3em;
+  padding: 0.3em;
+  margin:0em;
+  font-size: 0.8em;
+  transition-duration: 0.4s;
+  font-weight: bold;
+  margin-top: 0.5em;
+}
+.adminbutton:hover {
+  background-color:#002125;
+  color:#d3d3d3;
+}
+.campidatiadmin{
+  background-color:#002125;
+  color:#d3d3d3;
+  border-radius: 0.3em;
+  padding: 0.3em;
+  margin:0em;
+  font-size: 0.8em;
+}
+#titlemodificamissione{
+  padding-top: 1em;
+  font-size: calc(3vw + 0.5vh + 0.5vmin);
+}
+.scrittemodificamissione{
+  font-size: calc(1.5vw + 0.5vh + 0.5vmin);
+  background-color:#d3d3d3;
+  color:#002125;
+  border: 0.075em solid rgb(211,211,211, 0.5);
+  border-radius: 0.3em;
+  padding: 0.3em;
+  margin:0.5em;
+}
+.buttoninputmodificamissione{
+  font-size: calc(1vw + 0.5vh + 0.5vmin);
+  background-color:#002125;
+  color:#d3d3d3;
+  border: 0.1em solid #001a1d;
+  border-radius: 0.3em;
+  padding: 0.3em;
+  margin:0.5em;
+  width: 70%;
+}
+.buttonmodificamissione{
+  font-size: calc(1.5vw + 0.5vh + 0.5vmin);
+  background-color:#002125;
+  color:#d3d3d3;
+  border: 0.1em solid #001a1d;
+  border-radius: 0.3em;
+  padding: 0.3em;
+  margin:0.5em;
+}
+.buttonmodificamissione:hover {
+  background-color:#d3d3d3;
+  color:#002125;
+  border: 0.1em solid #002125;
+}
+.scrittemodificamissione, .buttoninputmodificamissione, .erroreModifica{
+  display: block;
+}
+.erroreModifica{
+  color: crimson;
 }
 }

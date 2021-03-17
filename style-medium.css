@@ -9,7 +9,7 @@ body {
   font-family: 'Oswald', sans-serif;
   color: #d3d3d3;
 }
-.navigation {
+#navigation {
   margin-top: -0.3em;
   padding: 0em;
   height: 3.2em;
@@ -18,7 +18,7 @@ body {
   position: sticky;
   top:0;
 }
-.navigation button {
+#navigation button {
   color: white;
   border:none;
   background-color: #002125;
@@ -31,11 +31,8 @@ body {
   font-size: 1.2em;
   font-family: 'Oswald', sans-serif;
 }
-#hamburger{
-  visibility: hidden;
-}
 
-.navigation .position {
+#navigation .position {
   color: #002125;
   background-color: #d3d3d3;
   border:none;
@@ -85,6 +82,50 @@ display: none;
   width: 9%;
   margin-left: 7%;
   height: auto;
+}
+.breadcrumb {
+  padding: 0.5em 1em  ;
+  margin: 0em;
+  list-style: none;
+  background-color: #001923;
+}
+.breadcrumb li {
+  display: inline;
+  font-size: 1.3em;
+}
+.breadcrumb li a {
+  color: #0275d8;
+  text-decoration: none;
+}
+
+#frecciasu
+{
+  padding: 0em;
+  width: 3.5em;
+  height: 3.5em;
+  border-radius: 50%;
+  background-image: url('images/frecciaup.jpg');
+  background-size: 3.5em;
+}
+
+#btnScrollToTop
+{
+  background-color: inherit;
+  border: 0em;
+  padding: 0em;
+  position: fixed;
+  right: 1em;
+  bottom: 1em;
+  width: 3.5em;
+  height: 3.5em;
+  cursor: pointer;
+}
+#frecciasu
+{
+  padding: 0em;
+  width: 3.5em;
+  height: 3.5em;
+  border-radius: 50%;
 }
 
 /*----------------HOME PAGE------------------------------------------------*/
@@ -188,13 +229,18 @@ display: none;
   border: 0.2em solid white;
   border-radius: 0.5em;
   padding: 0.3em;
-  margin:0em;
+  margin: 0;
   font-size: 0.5em;
   transition-duration: 0.4s;
 }
 .find-more-button:hover {
   background-color:white;
   color:black;
+}
+.error{
+  color: red;
+  width: 100%;
+  display: block;
 }
 /*-----------------CHI SIAMO----------------------------------------------*/
 
@@ -408,7 +454,7 @@ grid-template-areas:  'c  .'
 
 #Meeting{
   display: grid;
-  grid-template-columns: 5fr 1fr;
+  grid-template-columns: 3fr 7fr;
   grid-template-areas: 'cm1 cm2';
 }
 #meetimage
@@ -506,33 +552,17 @@ grid-template-areas:  'c  .'
   }
 
 /*----------------------------CONTATTACI----------------------------------*/
-.navigation {
-margin-top: -0.3em;
-padding: 0em;
-height: 3.2em;
-width: 100%;
-background-color: #002125;
-position: sticky;
-top:0;
-margin-bottom: 1em;
-z-index: 2;
-}
-body {
-padding:0em;
-margin:0em;
-background-image: linear-gradient(to bottom, #0d0d0d, #00444C);
-font-family: 'Oswald', sans-serif;
-color: #d3d3d3;
+#navigation{
+  z-index: 2;
 }
 .header{
 position: relative;
-z-index: -1;
+margin-top: 2.7em;
 text-align: center;
 }
 .aurora{
 width: 100%;
 filter: blur(8px);
--webkit-filter: blur(8px);
 }
 .titolo{
 position: absolute;
@@ -550,17 +580,6 @@ font-size: 3vw;
 text-align: center;
 max-height: 70%;
 text-shadow: 2px 2px 4px #000000;
-background-color: rgb(0,0,0);
-background-color: rgba(0,0,0, 0.6);
-color: white;
-font-weight: bold;
-border: 3px solid #f1f1f1;
-border-radius: 10px;
-width: 80%;
-padding: 2%;
-font-size: 3vw;
-text-align: center;
-max-height: 70%;
 }
 .testo{
 margin: 0em;
@@ -606,42 +625,66 @@ background-color: rgba(200,255,210, 0.1);
 border: 3px solid rgba(200,255,210, 0.1);
 max-width: 90%;
 }
-#immagine_insta{
+#immagine_insta, #immagine_face, #immagine_twit{
 margin: 3%;
 margin-left: 15%;
 max-width: 10%;
 }
-#immagine_face{
-margin: 3%;
+#foto_social1, #foto_social2, #foto_social3{
 margin-left: 15%;
-max-width: 10%;
-}
-#immagine_twit{
-margin: 3%;
-margin-left: 15%;
-max-width: 10%;
-}
-#foto_social1{
-margin-left: 15%;
-max-width: 70%;
-}
-#foto_social2{
-margin-left: 15%;
-max-width: 70%;
-}
-#foto_social3{
-margin-left: 15%;
-max-width: 70%;
+width: 60%;
+position: relative;
+left: 5%;
 }
 #formid{
-position:relative;
-left: 2em;
+  position:relative;
+  left: 10%;
+  max-width: 80%;
+  }
+#textarea{
+  resize: none;
+  max-width: 70%;
+}
+.formerror{
+  color: crimson;
 }
 .validation{
 padding:2em;
 }
 #validation2{
 padding:2em;
+}
+.inputform{
+  background-color:#002125;
+  color:#d3d3d3;
+  border: 0.075em solid #d3d3d3;
+  border-radius: 0.3em;
+  padding: 0.3em;
+  margin:0em;
+  font-size: 2em;
+}
+#sendbutton {
+  background-color: #d3d3d3;
+  color: #002125;
+  border: 0.2em solid #002125;
+  border-radius: 0.3em;
+  padding: 0.3em;
+  margin:0em;
+  font-size: 2em;
+  transition-duration: 0.4s;
+  font-weight: bold;
+  margin-top: 1em;
+}
+#sendbutton:hover {
+  background-color:#002125;
+  color:#d3d3d3;
+  border: 0.2em solid #d3d3d3;;
+}
+.formdescription, .formerror{
+  font-size: calc(2vw + 0.7vh + 0.7vmin);
+}
+.formdescription, .formerror, .inputform{
+  display: flex;
 }
 
 /* ------------ RICERCA ------------------------------------ */
@@ -786,87 +829,134 @@ align-self: center;
 /*--------------ESPLORAZIONI------------------------------------------*/
 #contentEsp h1{
     text-align: center;
-    font-size: 3.8em;
-    margin: 0.5em 0em 0em 0em;
+    font-size: 5em;
+    margin-top: 1.5em;
+}
+
+#search_section {
+  text-align: left;
+  width: 150%;
+}
+
+#pulsante_cerca_pianeta {
+  display: block;
+}
+
+.dis_block{
+  display: block;
 }
 
 #search{
-  width: 230px;
-  margin-left: auto;
-  margin-right: auto;
+  display: grid;
+  grid-gap: 0.2em;
+  grid-template-areas: 'box but';
+  grid-template-columns: 1fr 1fr;
+  margin-left: 33%;
 }
-#search fieldset{border: 0px solid;padding: 0}
-#search legend{text-indent: -9999px;font-size: 1px}
+#search fieldset{border: 0px solid;padding: 0;}
+#search legend{text-indent: -9999px;font-size: 1px;}
 #search input{
     float: left;
-    width: 170px;
-    height: 2.4em;
+    width: 10em;
+    height: 2.5em;
     margin: 1em 0em;
-    background: #FFF url(bk.png) repeat-x top left;
     border: 1px solid;
     font-size: 1.3em;
     border-color: #002125;
     border-radius: 0.3em;
 }
 #search button{
+  font-weight: bold;
   border-radius: 0.5em;
   cursor: pointer;
   background-color: #d3d3d3;
   color: #002125;
-  border: 0.2em solid #002125;
-  padding: 11px;
-  padding-bottom: 12px;
+  padding: 1.1em;
   margin:0em;
-  font-size: 1.1em;
   transition-duration: 0.4s;
-  font-weight: bold;
-  margin-top: 1em;
+  margin-top: 1.4em;
+  margin-left: 1em;
 }
+
+#actionLabel {
+  display: block;
+}
+#contentEsp #searchError {
+  color: red;
+  text-align: center;
+}
+
+ .notToDisp {
+   display: none;
+ }
 
 #search button:hover {
-  background-color:#002125;
-  color:#d3d3d3;
+  border-color:#d3d3d3;
 }
 
-#contentMission {
-    text-align: center;
-    min-height: 24em;
+  #contentEsp {
+      text-align: center;
+  }
+
+#contentEsp p{
+  text-align: left;
 }
 
-#contentMissioni p{
-text-align: left;
+.buttonPrefe{
+  max-width: 5em;
+  max-height: 5em;
 }
 
-.mission-box {
-    background-color:#d3d3d3;
-    color:#002125;
+#filtro_scritta{
+  text-align: center;
+  font-size: 1.2em;
+}
+
+#filtro_attuale{
+  text-align: center;
+  font-size: 1.2em;
+  display: inline-block;
+}
+
+  .mission-box {
+    background-color: #d3d3d3;
+    color: #002125;
     font-weight: bold;
     border-radius: 0.4em;
     padding: 1em;
     text-decoration: none;
     margin: 4em;
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 30em;
+    margin-left: 2em;
+    margin-right: 2em;
+    width: 30em;
+    display: inline-block;
   }
 
 .mission-box h2{
     margin: 0em;
     text-align: center;
 }
-#contentEsp #dida{
-  font-size: 1.25em;
-  margin: 0em 0em 0em 0em;
-  text-align: center;
-}
-
-.no_disp{
-  display: none;
-}
 
 #errorPlanetNotFound{
-  color: #9f0000;
+  color: #fb5714;
+  font-size: 1.3em;
   text-align: center;
+  display: block;
+}
+
+#filtro_scritta{
+  margin-left: 40%;
+  text-align: center;
+  font-size: 1.2em;
+}
+
+#filtro_attuale{
+  text-align: center;
+  font-size: 1.2em;
+}
+
+#pulsante_cerca_tutte{
+  display: block;
 }
 
 .button_prefe{
@@ -881,45 +971,60 @@ text-align: left;
 .no_disp{
   display: none;
 }
+
 /* --------------- LOGIN --------------------------------------------- */
 
-.login-content{
+#login-content{
   text-align: center;
   align-content: center;
 }
-.login-content h1{
+#login-content h1{
     font-size: 4em;
 }
-.login-content a{
+#login-content a{
   color: #d3d3d3
 }
-.login-content p{
+#login-content p{
   margin-top: 1.5em;
+  margin-bottom: 0;
 }
 #login{
   background-color: #001115;
 }
 
-.login-box{
+#reg_succ {
+  display: block;
+}
+
+#login-box{
   background-color: #d3d3d3;
-  padding: 4em 0em;
-  margin: 1em 10%;
+  padding: 4em 0;
+  margin: 1em 18%;
   color: #002125;
   border-radius: 0.4em;
 }
-.login-box img{
-  padding: 0em;
+#login-box img{
+  padding: 0;
   margin-right:0.6em;
   width: 2.8em;
   height:3.2em;
   vertical-align: middle;
 }
-.login-box input{
-  margin: 1em 0em;
+#login-box input{
+  margin: 1em 18%;
   height: 2.5em;
-  margin-right: 2em;
   font-size: 1.3em;
-  width:18em;
+  width: 18em;
+  border: 0.2em;
+  border-color: #002125;
+  border-radius: 0.3em;
+  text-align: center;
+}
+#login-box select{
+  margin: 1em 6em;
+  height: 2.5em;
+  font-size: 1.3em;
+  width: 18em;
   border: 0.2em;
   border-color: #002125;
   border-radius: 0.3em;
@@ -941,5 +1046,116 @@ text-align: left;
   background-color:#002125;
   color:#d3d3d3;
 }
+/* --------------- ADMIN------------------------- */
+.admin-content{
+  position: relative;
+  left:5%;
+  max-width: 70%;
+  background-color: #d3d3d3;
+  color: #002125;
+  border: 0.2em solid #002125;
+  border-radius: 0.3em;
+  padding: 0.3em;
+  margin:3em;
+  font-size: calc(1.5vw + 0.8vh + 0.8vmin);
+  text-align: center;
+}
+.adminbutton {
+  background-color: #d3d3d3;
+  color: #002125;
+  border: 0.2em solid #002125;
+  border-radius: 0.3em;
+  padding: 0.3em;
+  margin:0em;
+  font-size: 0.8em;
+  transition-duration: 0.4s;
+  font-weight: bold;
+  margin-top: 0.5em;
+}
+.adminbutton:hover {
+  background-color:#002125;
+  color:#d3d3d3;
+}
+.campidatiadmin{
+  background-color:#002125;
+  color:#d3d3d3;
+  border-radius: 0.3em;
+  padding: 0.3em;
+  margin:0em;
+  font-size: 0.8em;
+}
+.amministratore-box{
+  background-color: #d3d3d3;
+  font-weight: bold;
+  border-radius: 0.4em;
+  padding: 1em;
+  text-decoration: none;
+  margin: 2em;
+  margin-left: 2em;
+  margin-right: 2em;
+  width: 30%;
+  display: inline-block;
+  vertical-align: top;
+}
+.amministratore-box img{
+  max-width: 20%;
+  max-height: 20%;
+  background-color: inherit;
+}
 
+.amministratore-box button{
+  width: 80%;
+  position:relative;
+  left: 10%;
+  right: 10%;
+}
+.nomemissione{
+  font-size: calc(1.5vw + 0.5vh + 0.5vmin);
+  text-align: center;
+  color: #000000;
+}
+
+#titlemodificamissione{
+  padding-top: 1em;
+  font-size: calc(3vw + 0.5vh + 0.5vmin);
+}
+.scrittemodificamissione{
+  font-size: calc(1.5vw + 0.5vh + 0.5vmin);
+  background-color:#d3d3d3;
+  color:#002125;
+  border: 0.075em solid #d3d3d3;
+  border-radius: 0.3em;
+  padding: 0.3em;
+  margin:0.5em;
+}
+.buttoninputmodificamissione{
+  font-size: calc(1vw + 0.5vh + 0.5vmin);
+  background-color:#002125;
+  color:#d3d3d3;
+  border: 0.1em solid #001a1d;
+  border-radius: 0.3em;
+  padding: 0.3em;
+  margin:0.5em;
+  width: 70%;
+}
+.buttonmodificamissione{
+  font-size: calc(1.5vw + 0.5vh + 0.5vmin);
+  background-color:#002125;
+  color:#d3d3d3;
+  border: 0.1em solid #001a1d;
+  border-radius: 0.3em;
+  padding: 0.3em;
+  margin:0.5em;
+}
+.buttonmodificamissione:hover {
+  background-color:#d3d3d3;
+  color:#002125;
+  border: 0.1em solid #002125;
+}
+.scrittemodificamissione, .buttoninputmodificamissione, .erroreModifica{
+  display: block;
+}
+.erroreModifica{
+  color: crimson;
+}
 }
